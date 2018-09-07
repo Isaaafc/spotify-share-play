@@ -10,8 +10,12 @@ using System.Threading.Tasks;
 
 namespace SpotifySharePlay {
     class SpotifyApiManager {
-        private ImplictGrantAuth auth;
-        private string clientId = "7984f21178dd421587060d3fe281f79d";
+        public delegate void AuthCompletedHandler();
+        public AuthCompletedHandler AuthCompleted;
+
+        public string clientId = "7984f21178dd421587060d3fe281f79d";
+        private SpotifyWebAPI spotify;
+        ImplictGrantAuth auth;
 
         public SpotifyApiManager() {
            
@@ -23,6 +27,17 @@ namespace SpotifySharePlay {
             //Start the internal http server
             auth.Start();
             auth.OpenBrowser();
+
+            auth.AuthReceived += (obj, token) => {
+                spotify = new SpotifyWebAPI();
+                spotify.AccessToken = token.AccessToken;
+                spotify.TokenType = token.TokenType;
+
+                Console.WriteLine("Received token: {0}, type: {1}", spotify.AccessToken, spotify.TokenType);
+                auth.Stop();
+
+                AuthCompleted();
+            };
         }
     }
 }

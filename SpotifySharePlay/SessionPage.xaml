@@ -1,0 +1,38 @@
+﻿<Page x:Class="SpotifySharePlay.SessionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SpotifySharePlay"
+      mc:Ignorable="d"
+      HorizontalAlignment="Stretch"
+      VerticalAlignment="Stretch"
+      Title="SessionPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="0">
+            <Label Content="Input session key / create a new session:" />
+            
+            <TextBox Name="tbSessionKey"
+                 Style="{StaticResource DefaultTextBoxStyle}"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Grid.Row="1">
+            <Button Name="btnCreateSession"
+                    Style="{StaticResource DefaultBtnStyle}"
+                    Content="Create New Session" />
+
+            <Button Name="btnJoinSession"
+                    Style="{StaticResource DefaultBtnStyle}"
+                    Content="Join Session" />
+        </StackPanel>
+    </Grid>
+</Page>

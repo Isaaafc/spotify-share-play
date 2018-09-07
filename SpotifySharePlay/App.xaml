@@ -4,6 +4,103 @@
              xmlns:local="clr-namespace:SpotifySharePlay"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <!--Colors-->
+        <SolidColorBrush x:Key="MaterialOrange"
+                         Color="#F57C00" />
+
+        <SolidColorBrush x:Key="LightBlue"
+                         Color="#B2EBF2" />
+
+        <SolidColorBrush x:Key="MaterialPink"
+                         Color="#E91E63" />
+
+        <SolidColorBrush x:Key="MaterialLightPink"
+                         Color="#FF5860" />
+
+        <SolidColorBrush x:Key="MaterialTeal"
+                         Color="#009688" />
+
+        <SolidColorBrush x:Key="MaterialTealOpaque"
+                         Color="#00968855" />
+
+        <SolidColorBrush x:Key="MaterialGrey"
+                         Color="#F5F5F5" />
+
+        <SolidColorBrush x:Key="MaterialMediumGrey"
+                         Color="#DDDDDD" />
+
+        <SolidColorBrush x:Key="MaterialDarkGrey"
+                         Color="#3A444A" />
+
+        <!--Button styles-->
+        <Style TargetType="Button"
+               x:Key="DefaultBtnStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                            <TextBlock Text="{TemplateBinding Content}"
+                                       TextAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       FontWeight="SemiBold" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderThickness"
+                    Value="1" />
+            <Setter Property="MinWidth"
+                    Value="125" />
+            <Setter Property="Height"
+                    Value="25" />
+            <Setter Property="Margin"
+                    Value="5 0 5 0" />
+            <Setter Property="Background"
+                    Value="White" />
+            <Setter Property="BorderBrush"
+                    Value="Black" />
+            <Setter Property="Foreground"
+                    Value="Black" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver"
+                         Value="True">
+                    <Setter Property="BorderBrush"
+                            Value="{StaticResource MaterialLightPink}" />
+                    <Setter Property="Foreground"
+                            Value="{StaticResource MaterialLightPink}" />
+                </Trigger>
+                <Trigger Property="IsEnabled"
+                         Value="false">
+                    <Setter Property="Background"
+                            Value="{StaticResource MaterialMediumGrey}" />
+                    <Setter Property="Foreground"
+                            Value="{StaticResource MaterialGrey}" />
+                    <Setter Property="BorderBrush"
+                            Value="{StaticResource MaterialMediumGrey}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <!--Text Box Styles-->
+        <Style TargetType="TextBox"
+               x:Key="DefaultTextBoxStyle">
+            <Setter Property="BorderBrush"
+                    Value="{StaticResource MaterialDarkGrey}" />
+            <Setter Property="BorderThickness"
+                    Value="0.5" />
+            <Setter Property="Height"
+                    Value="30px" />
+            <Setter Property="Margin"
+                    Value="5" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Stretch" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+            <Setter Property="FontSize"
+                    Value="15px" />
+        </Style>
     </Application.Resources>
 </Application>

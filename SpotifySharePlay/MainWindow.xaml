@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Frame x:Name="frame"
+               Content=""
+               HorizontalAlignment="Stretch"
+               VerticalAlignment="Stretch"
+               NavigationUIVisibility="Hidden"
+               HorizontalContentAlignment="Stretch"
+               VerticalContentAlignment="Stretch" />
     </Grid>
 </Window>

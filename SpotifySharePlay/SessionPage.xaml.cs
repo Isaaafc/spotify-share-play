@@ -1,8 +1,4 @@
-﻿using SpotifyAPI.Web;
-using SpotifyAPI.Web.Auth;
-using SpotifyAPI.Web.Enums;
-using SpotifyAPI.Web.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,17 +15,11 @@ using System.Windows.Shapes;
 
 namespace SpotifySharePlay {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SessionPage.xaml
     /// </summary>
-    public partial class MainWindow : Window {
-        SpotifyApiManager manager;
-
-        public MainWindow() {
+    public partial class SessionPage : Page {
+        public SessionPage() {
             InitializeComponent();
-
-            manager = new SpotifyApiManager();
-            manager.Init();
         }
-
     }
 }
