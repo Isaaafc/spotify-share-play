@@ -18,8 +18,24 @@ namespace SpotifySharePlay {
     /// Interaction logic for SessionPage.xaml
     /// </summary>
     public partial class SessionPage : Page {
-        public SessionPage() {
+        private SpotifyApiManager manager;
+        private Session session;
+
+        public SessionPage(SpotifyApiManager manager) {
             InitializeComponent();
+
+            this.manager = manager;
+            session = new Session();
+        }
+
+        private void btnCreateSession_Click(object sender, RoutedEventArgs e) {
+            if (session.GenerateKey()) {
+                tbSessionKey.Text = session.Key;
+            }
+        }
+
+        private void btnJoinSession_Click(object sender, RoutedEventArgs e) {
+            
         }
     }
 }

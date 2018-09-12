@@ -28,11 +28,13 @@
                     Grid.Row="1">
             <Button Name="btnCreateSession"
                     Style="{StaticResource DefaultBtnStyle}"
-                    Content="Create New Session" />
+                    Content="Create New Session"
+                    Click="btnCreateSession_Click" />
 
             <Button Name="btnJoinSession"
                     Style="{StaticResource DefaultBtnStyle}"
-                    Content="Join Session" />
+                    Content="Join Session"
+                    Click="btnJoinSession_Click" />
         </StackPanel>
     </Grid>
 </Page>

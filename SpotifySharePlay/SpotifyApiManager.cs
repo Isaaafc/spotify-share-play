@@ -9,7 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SpotifySharePlay {
-    class SpotifyApiManager {
+    /// <summary>
+    /// Controller class for the Spotify player
+    /// </summary>
+    public class SpotifyApiManager {
         public delegate void AuthCompletedHandler();
         public AuthCompletedHandler AuthCompleted;
 
@@ -22,7 +25,8 @@ namespace SpotifySharePlay {
         }
 
         public void Init() {
-            auth = new ImplictGrantAuth(clientId, "http://localhost:8000", "http://localhost:8000", Scope.UserReadPrivate);
+            auth = new ImplictGrantAuth(clientId, "http://localhost:8000", "http://localhost:8000");
+            auth.Scope = Scope.UserModifyPlaybackState | Scope.Streaming;
 
             //Start the internal http server
             auth.Start();
@@ -38,6 +42,14 @@ namespace SpotifySharePlay {
 
                 AuthCompleted();
             };
+        }
+
+        public void Play(string context, int offset = 0) {
+            spotify.ResumePlayback(contextUri: context, offset: offset);
+        }
+
+        public void Pause() {
+            spotify.PausePlayback();
         }
     }
 }

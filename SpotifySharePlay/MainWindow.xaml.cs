@@ -23,11 +23,20 @@ namespace SpotifySharePlay {
     /// </summary>
     public partial class MainWindow : Window {
         SpotifyApiManager manager;
+        SessionPage sessionPage;
 
         public MainWindow() {
             InitializeComponent();
 
             manager = new SpotifyApiManager();
+            sessionPage = new SessionPage(manager);
+
+            manager.AuthCompleted = () => {
+                Dispatcher.Invoke(() => {
+                    frame.Navigate(sessionPage);
+                });
+            };
+
             manager.Init();
         }
 
