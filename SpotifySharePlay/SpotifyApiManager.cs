@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common;
 
 namespace SpotifySharePlay {
     /// <summary>
@@ -50,6 +51,10 @@ namespace SpotifySharePlay {
 
         public void Pause() {
             spotify.PausePlayback();
+        }
+
+        public AvailabeDevices GetDevices() {
+            return spotify.GetDevices();
         }
     }
 }

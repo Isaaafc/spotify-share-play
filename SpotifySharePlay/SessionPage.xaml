@@ -13,11 +13,12 @@
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Vertical"
                     Grid.Row="0">
-            <Label Content="Input session key / create a new session:" />
+            <Label Name="lblMsg" />
             
             <TextBox Name="tbSessionKey"
                  Style="{StaticResource DefaultTextBoxStyle}"/>
@@ -35,6 +36,33 @@
                     Style="{StaticResource DefaultBtnStyle}"
                     Content="Join Session"
                     Click="btnJoinSession_Click" />
+
+            <Button Name="btnQuitSession"
+                    Style="{StaticResource DefaultBtnStyle}"
+                    Content="Quit Session"
+                    Click="btnQuitSession_Click"
+                    Visibility="Collapsed" />
+        </StackPanel>
+        
+        <StackPanel Name="spPlayback"
+                    Orientation="Vertical"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Grid.Row="2"
+                    Visibility="Collapsed">
+            <StackPanel Name="spPlaybackInfo" />
+            
+            <StackPanel Orientation="Horizontal">
+                <Button Name="btnPlay"
+                        Style="{StaticResource DefaultBtnStyle}"
+                        Content="Play"
+                        Click="btnPlay_Click" />
+
+                <Button Name="btnPause"
+                        Style="{StaticResource DefaultBtnStyle}"
+                        Content="Pause"
+                        Click="btnPause_Click" />
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>
