@@ -21,13 +21,19 @@ namespace SpotifySharePlay {
         private SpotifyWebAPI spotify;
         ImplictGrantAuth auth;
 
+        public SpotifyWebAPI Spotify {
+            get {
+                return spotify;
+            }
+        }
+
         public SpotifyApiManager() {
            
         }
 
         public void Init() {
             auth = new ImplictGrantAuth(clientId, "http://localhost:8000", "http://localhost:8000");
-            auth.Scope = Scope.UserModifyPlaybackState | Scope.Streaming;
+            auth.Scope = Scope.UserModifyPlaybackState | Scope.UserReadPlaybackState;
 
             //Start the internal http server
             auth.Start();
@@ -38,23 +44,23 @@ namespace SpotifySharePlay {
                 spotify.AccessToken = token.AccessToken;
                 spotify.TokenType = token.TokenType;
 
-                Console.WriteLine("Received token: {0}, type: {1}", spotify.AccessToken, spotify.TokenType);
                 auth.Stop();
 
                 AuthCompleted();
             };
         }
 
-        public void Play(string context, int offset = 0) {
-            spotify.ResumePlayback(contextUri: context, offset: offset);
-        }
+        public void Update(PlaybackContext playback) {
+            /// Play or pause according to the playback info
+            if (playback == null || playback.Item == null)
+                return;
 
-        public void Pause() {
-            spotify.PausePlayback();
-        }
-
-        public AvailabeDevices GetDevices() {
-            return spotify.GetDevices();
+            if (playback.IsPlaying) {
+                spotify.ResumePlayback(uris: new List<string>() { playback.Item.Uri }, offset: (int?)null);
+                spotify.SeekPlayback(playback.ProgressMs);
+            } else {
+                spotify.PausePlayback();
+            }
         }
     }
 }

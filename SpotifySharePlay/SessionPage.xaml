@@ -18,9 +18,10 @@
 
         <StackPanel Orientation="Vertical"
                     Grid.Row="0">
-            <Label Name="lblMsg" />
+            <TextBlock Name="tbMsg"
+                       TextWrapping="Wrap" />
             
-            <TextBox Name="tbSessionKey"
+            <TextBox Name="txtSessionKey"
                  Style="{StaticResource DefaultTextBoxStyle}"/>
         </StackPanel>
         
@@ -46,7 +47,7 @@
         
         <StackPanel Name="spPlayback"
                     Orientation="Vertical"
-                    HorizontalAlignment="Stretch"
+                    HorizontalAlignment="Center"
                     VerticalAlignment="Stretch"
                     Grid.Row="2"
                     Visibility="Collapsed">
