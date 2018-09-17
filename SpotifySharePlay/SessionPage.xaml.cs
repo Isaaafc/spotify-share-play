@@ -81,14 +81,12 @@ namespace SpotifySharePlay {
             var playback = session.Playback;
             playback.IsPlaying = true;
 
-            session.jsonResponse = JsonConvert.SerializeObject(playback);
         }
 
         private void btnPause_Click(object sender, RoutedEventArgs e) {
             var playback = manager.Spotify.GetPlayback();
             playback.IsPlaying = false;
 
-            session.jsonResponse = JsonConvert.SerializeObject(playback);
         }
     }
 }
